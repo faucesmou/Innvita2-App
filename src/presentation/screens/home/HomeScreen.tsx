@@ -3,10 +3,10 @@ import { Text, View } from 'react-native'
 import { globalStyles } from '../../../config/theme/theme';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Title } from '../../components/ui/Title';
+import { MenuItem } from '../../components/ui/MenuItem';
 /* import { AirplaneIcon } from '../../icons/icons' */
 
-export const menuItems = [
-  // 01-animationMenuItems
+const animationMenuItems = [ 
   {
     name: 'Animation 101',
     icon: 'cube-outline',
@@ -17,9 +17,10 @@ export const menuItems = [
     icon: 'albums-outline',
     component: 'Animation102Screen',
   },
+]
 
 
-  // 02-menuItems
+export const menuItems = [
   {
     name: 'Pull to refresh',
     icon: 'refresh-outline',
@@ -50,8 +51,9 @@ export const menuItems = [
     icon: 'flask-outline',
     component: 'ChangeThemeScreen',
   },
+];
 
-  // 03- uiMenuItems
+const uiMenuItems = [
   {
     name: 'Switches',
     icon: 'toggle-outline',
@@ -67,9 +69,7 @@ export const menuItems = [
     icon: 'document-text-outline',
     component: 'TextInputScreen',
   },
-];
-
-
+]
 
 export const HomeScreen = () => {
   return (
@@ -79,10 +79,41 @@ export const HomeScreen = () => {
       <Title text='Opciones del menú' safe />
 
 {
-  menuItems.map( item => (
-    <Text key={ item.component }> { item.name }  </Text>
+  menuItems.map( (item, index ) => (
+    <MenuItem key={ item.component } /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
+    {...item }
+    isFirst={ index === 0 }
+    isLast={ index === menuItems.length - 1 }
+    /> 
+   
   ))
 }
+
+<View style={{ marginTop: 30 }}/>
+{
+  animationMenuItems.map( (item, index ) => (
+    <MenuItem key={ item.component } /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
+    {...item }
+    isFirst={ index === 0 }
+    isLast={ index === animationMenuItems.length - 1 }
+    /> 
+   
+  ))
+}
+
+<View style={{ marginTop: 30 }}/>
+{
+  uiMenuItems.map( (item, index ) => (
+    <MenuItem key={ item.component } /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
+    {...item }
+    isFirst={ index === 0 }
+    isLast={ index === uiMenuItems.length - 1 }
+    /> 
+   
+  ))
+}
+
+<View style={{ height: 10 }}/>
 
       </ScrollView>
         </View>      
