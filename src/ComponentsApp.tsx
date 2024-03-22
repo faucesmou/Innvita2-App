@@ -3,6 +3,9 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Text, View } from 'react-native'
+import { AirplaneIcon } from './presentation/icons/icons';
+import { HomeScreen } from './presentation/screens/home/HomeScreen';
+import { Navigator } from './presentation/navigator/Navigator';
 
 
   export const ComponentsApp = () => {
@@ -10,11 +13,7 @@ import { Text, View } from 'react-native'
 
     <NavigationContainer>
 
-    <View>
-      <Text>
-        componente App Inicio
-      </Text>
-    </View>
+    <Navigator/>
 
     </NavigationContainer>    
   )
