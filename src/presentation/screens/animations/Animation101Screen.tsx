@@ -1,26 +1,47 @@
-import React from 'react'
-import { Pressable, StyleSheet, Text } from 'react-native'
+import React, { useRef } from 'react'
+import { Animated, Easing, Pressable, StyleSheet, Text } from 'react-native'
 import { View } from 'react-native'
 import { colors } from '../../../config/theme/theme'
-
+import { useAnimation } from '../../hooks/useAnimation';
 
 
 export const Animation101Screen = () => {
+
+
+const { fadeIn, fadeOut, animatedOpacity, animatedTop, startMovingTopPosition } = useAnimation();
+
+
+
   return (
 <View style={ styles.container }>
 
-    <View style={ [styles.purpleBox ]} />
+    <Animated.View style={ [styles.purpleBox,
+    {
+        opacity: animatedOpacity,
+        transform: [{
+            translateY: animatedTop
+        }]
+    } ]} />
+
 
         <Pressable 
-        onPress={ () => console.log('fadeIn')} 
+        onPress={ ()=> {
+            fadeIn({});
+            startMovingTopPosition({
+            initialPosition: -100,
+            easing: Easing.elastic(1),
+            duration: 750,
+         })
+        } } 
         style={{ marginTop: 10 }}
         >
             <Text>
                 Fade In
             </Text>
         </Pressable>
+
         <Pressable 
-        onPress={ () => console.log('fade out')}
+        onPress={ ()=> fadeOut({}) }
         style={{ marginTop: 10 }}
         >
             <Text>
