@@ -6,6 +6,9 @@ import { Title } from '../../components/ui/Title'
 import { globalStyles } from '../../../config/theme/theme'
 import { Button } from '../../components/Button'
 
+import prompt from 'react-native-prompt-android';
+import { showPrompt } from '../../../config/adapters/prompt.adapter'
+
 export const AlertScreen = () => {
 
 
@@ -41,16 +44,54 @@ export const AlertScreen = () => {
       },
     ]);
 
-    const showPropmt = () => {
+    /* usando el paquete de prompt importado al inicio + el adapter ( prompt.adapter.ts : esto se hace para evitar tener que cambiar la configuraciòjn de cada prompt o alert, cuando tengamos que cambiar alguna implementacion sencillamente modificamos la prompt.adapter.ts y el resto van a funcionar automáticamente. aquí el ejemplo: */
+    const onshowPrompt = () => {
 
-        Alert.prompt(
+        showPrompt({
+            title: 'Prueba de un título',
+            subTitle: 'prueba de un subtítulo',
+            buttons: [
+                { text: 'ok', onPress: ()=> console.log('ok') }
+            ],
+            placeholder: 'placeholder pa'
+        });
+  
+
+   
+    };
+
+
+    const onshowPrompt2 = () => {
+/* usando el paquete de prompt importado al inicio : (puede que tengamos que actualizarlo. o usar otro paquete. existe la posibilidad de incluir un adapter. )*/
+        prompt(
+            'Enter password',
+            'Enter your password to claim your $1.5B in lottery winnings',
+            [
+             {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+             {text: 'OK', onPress: password => console.log('OK Pressed, password: ' + password)},
+            ],
+            {
+                type: 'secure-text',
+                cancelable: false,
+                defaultValue: 'test',
+                placeholder: 'placeholder'
+            });
+
+   
+    }
+
+    const onshowPrompt1 = () => {
+
+        /* codigo nativo:  */
+
+       Alert.prompt(
             'correo electronico?',
             'texto texto texto lalalala',
             ( valor: string ) => console.log({ valor }),
             'secure-text',
             'defecto',
             'number-pad'
-        );
+        ); 
     }
 
 
@@ -79,7 +120,7 @@ onPress={ createThreeButtonAlert }
 
 <Button
 text="Prompt- input "
-onPress={ showPropmt }
+onPress={ onshowPrompt }
 />
 
 </CustomView>
