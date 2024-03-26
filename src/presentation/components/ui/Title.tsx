@@ -13,7 +13,7 @@ interface Props {
 export const Title = ({ text, safe= false, white = false  }: Props ) => {
 
 
-const { top } = useSafeAreaInsets();
+const { top  } = useSafeAreaInsets();
 
 
   return (
@@ -21,7 +21,7 @@ const { top } = useSafeAreaInsets();
     <View>
         <Text style={{ 
             ...globalStyles.title,
-            marginTop: safe? top: 0,
+            marginTop: safe? top - 35 : 0,
             marginBottom: 10,
             color: white ? 'white' : colors.text
         }}>
