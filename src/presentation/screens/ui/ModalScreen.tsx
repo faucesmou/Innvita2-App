@@ -18,6 +18,7 @@ export const ModalScreen = () => {
             <Button
                 text='Abrir Modal'
                 onPress={() => setisVisible(true)}
+               
             />
 
             <Modal
@@ -29,16 +30,17 @@ export const ModalScreen = () => {
                     flex: 1,
                     backgroundColor: 'rgba(0,0,0,0.1)'
                         }} >
-                    <View style={{ paddingHorizontal: 10 }} >
-                        <Title text='Modal content' safe />
+                    <View style={{ paddingHorizontal: 10, marginTop: 50 }} >
+                        <Title text='Modal content' safe  />
                     </View>
                     <View style={{ flex: 1 }} />
 
                 <Button 
-                text='cerrar modal perro'
+                text='Cerrar modal perro'
                 onPress={ () => setisVisible(false) }
                 styles={{ height: Platform.OS === 'android' ? 40 : 60,
-                borderRadius: 0 }}
+                borderRadius: 0,
+            marginBottom:5}}
                 />
 
             {/*     <Button 

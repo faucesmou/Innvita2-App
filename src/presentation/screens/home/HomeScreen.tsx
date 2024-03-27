@@ -6,7 +6,7 @@ import { Title } from '../../components/ui/Title';
 import { MenuItem } from '../../components/ui/MenuItem';
 /* import { AirplaneIcon } from '../../icons/icons' */
 
-const animationMenuItems = [ 
+const animationMenuItems = [
   {
     name: 'Animation 101',
     icon: 'cube-outline',
@@ -73,50 +73,58 @@ const uiMenuItems = [
 
 export const HomeScreen = () => {
   return (
-    <View style={ [globalStyles.mainContainer]}>
-        <View style={ globalStyles.globalMargin }>
-      <ScrollView>
-      <Title text='Opciones del menú' safe />
+    <View style={[globalStyles.mainContainer]}>
+      <View style={globalStyles.globalMargin}>
+        <ScrollView>
+          <Title text='Menú INNVITA' safe />
 
-{
-  menuItems.map( (item, index ) => (
-    <MenuItem key={ item.component } /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
-    {...item }
-    isFirst={ index === 0 }
-    isLast={ index === menuItems.length - 1 }
-    /> 
-   
-  ))
-}
 
-<View style={{ marginTop: 30 }}/>
-{
-  animationMenuItems.map( (item, index ) => (
-    <MenuItem key={ item.component } /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
-    {...item }
-    isFirst={ index === 0 }
-    isLast={ index === animationMenuItems.length - 1 }
-    /> 
-   
-  ))
-}
+          <View style={{ marginTop: 30 }} />
+          {
+            animationMenuItems.map((item, index) => (
+              <MenuItem key={item.component} /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
+                {...item}
+                isFirst={index === 0}
+                isLast={index === animationMenuItems.length - 1}
+              />
 
-<View style={{ marginTop: 30 }}/>
-{
-  uiMenuItems.map( (item, index ) => (
-    <MenuItem key={ item.component } /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
-    {...item }
-    isFirst={ index === 0 }
-    isLast={ index === uiMenuItems.length - 1 }
-    /> 
-   
-  ))
-}
+            ))
+          }
 
-<View style={{ height: 10 }}/>
 
-      </ScrollView>
-        </View>      
+          <View style={{ marginTop: 30 }} />
+          {
+            uiMenuItems.map((item, index) => (
+              <MenuItem key={item.component} /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
+                {...item}
+                isFirst={index === 0}
+                isLast={index === uiMenuItems.length - 1}
+              />
+
+            ))
+          }
+
+          <View style={{ marginTop: 30 }} />
+
+          {
+            menuItems.map((item, index) => (
+              <MenuItem key={item.component} /* name='d' icon='s' component='d' o sino hacemos el spread del item: */
+                {...item}
+                isFirst={index === 0}
+                isLast={index === menuItems.length - 1}
+              />
+
+            ))
+          }
+
+
+
+
+
+          <View style={{ height: 10 }} />
+
+        </ScrollView>
+      </View>
     </View>
   )
 }
